@@ -1,6 +1,8 @@
 ﻿
 
 
+using System.Diagnostics;
+
 class Program
 {
    static int count = 0;
@@ -34,12 +36,12 @@ class Program
     private static (double,int) Test(Action<int[]> Sort, int[] copyArray)
     {
         count = 0;
-        
-        var timeStart = DateTime.Now;
+        var stopwatch = new Stopwatch();
+        stopwatch.Start();
         Sort(copyArray);
-        var timeEnd = DateTime.Now;
-        var time = new TimeSpan(timeEnd.Ticks - timeStart.Ticks).TotalMilliseconds;
-        return (time,count);
+        stopwatch.Stop();
+
+        return (stopwatch.ElapsedMilliseconds,count);
     }
 
 
