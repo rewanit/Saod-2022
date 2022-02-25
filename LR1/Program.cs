@@ -2,6 +2,7 @@
 
 
 using System.Diagnostics;
+using System.Security.Cryptography;
 
 class Program
 {
@@ -13,7 +14,7 @@ class Program
         var qSortList = new List<(double, int)>();
         var shakerList = new List<(double, int)>();
         
-        for (int i = 0; i < 100; i++)
+        for (int i = 0; i < 1000; i++)
         {
 
 
@@ -74,27 +75,57 @@ class Program
     //Быстрая
     static  void QSort(int[] array)
     {
-        QSort(ref array,0,-1);
+        QSort(ref array,0,array.Length-1);
     }
 
-    static void QSort(ref int[] array, int firstIndex, int lastIndex)
+    private static void QSort(ref int[] arr, int left, int right)
     {
-        if (lastIndex < 0)
-            lastIndex = array.Length - 1;
-        if (firstIndex >= lastIndex)
-            return;
-        int middleIndex = (lastIndex - firstIndex) / 2 + firstIndex, currentIndex = firstIndex;
-        Swap(ref array[firstIndex], ref array[middleIndex]);
-        for (int i = firstIndex + 1; i <= lastIndex; ++i)
+        if (left < right)
         {
-            if (array[i] <= array[firstIndex])
+            int pivot = Partition(ref arr, left, right);
+
+            if (pivot > 1)
             {
-                Swap(ref array[++currentIndex], ref array[i]);
+                QSort(ref arr, left, pivot - 1);
+            }
+            if (pivot + 1 < right)
+            {
+                QSort(ref arr, pivot + 1, right);
             }
         }
-        Swap(ref array[firstIndex], ref array[currentIndex]);
-        QSort(ref array, firstIndex, currentIndex - 1);
-        QSort(ref array, currentIndex + 1, lastIndex);
+
+    }
+
+    private static int Partition(ref int[] arr, int left, int right)
+    {
+        int pivot = arr[left];
+        while (true)
+        {
+
+            while (arr[left] < pivot)
+            {
+                left++;
+            }
+
+            while (arr[right] > pivot)
+            {
+                right--;
+            }
+
+            if (left < right)
+            {
+                if (arr[left] == arr[right]) return right;
+
+                Swap(ref arr[left], ref arr[right]);
+                
+
+
+            }
+            else
+            {
+                return right;
+            }
+        }
     }
 
     static void Swap(ref int x, ref int y) 
