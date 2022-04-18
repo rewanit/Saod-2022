@@ -11,14 +11,14 @@ class Program
         var binary = new List<double>();
         for (int i = 0; i < 500; i++)
         {
-            var array = Enumerable.Range(1, 1000).ToArray();
+            var array = Enumerable.Range(1, 10000).ToArray();
             var toFind = array[random.Next(0, array.Length - 1)];
             linear.Add(Test(LinearFind, toFind, array));
             binary.Add(Test(BinarySearch, toFind, array));
         }
         Console.WriteLine("Отсортированная последовательность");
-        Console.WriteLine($"Линейный\nMs Min:{linear.MinBy(x => x)} Max:{linear.MaxBy(x => x)} Avg:{linear.Sum(x => x) / (float)linear.Count}\nSwap Min:{linear.MinBy(x => x)} Max:{linear.MaxBy(x => x)} Avg:{linear.Sum(x => x) / (float)linear.Count}");
-        Console.WriteLine($"Бинарный\nMs Min:{binary.MinBy(x => x)} Max:{binary.MaxBy(x => x)} Avg:{binary.Sum(x => x) / (float)binary.Count}\nSwap Min:{binary.MinBy(x => x)} Max:{binary.MaxBy(x => x)} Avg:{binary.Sum(x => x) / (float)binary.Count}");
+        Console.WriteLine($"Линейный\nMs Min:{linear.MinBy(x => x)} Max:{linear.MaxBy(x => x)} Avg:{linear.Sum(x => x) / (float)linear.Count}");
+        Console.WriteLine($"Бинарный\nMs Min:{binary.MinBy(x => x)} Max:{binary.MaxBy(x => x)} Avg:{binary.Sum(x => x) / (float)binary.Count}");
         Console.WriteLine();
         for (int i = 0; i < 500; i++)
         {
@@ -27,7 +27,7 @@ class Program
             linear.Add(Test(LinearFind, toFind, array));
         }
         Console.WriteLine("Случайная последовательность");
-        Console.WriteLine($"Линейный\nMs Min:{linear.MinBy(x => x)} Max:{linear.MaxBy(x => x)} Avg:{linear.Sum(x => x) / (float)linear.Count}\nSwap Min:{linear.MinBy(x => x)} Max:{linear.MaxBy(x => x)} Avg:{linear.Sum(x => x) / (float)linear.Count}");
+        Console.WriteLine($"Линейный\nMs Min:{linear.MinBy(x => x)} Max:{linear.MaxBy(x => x)} Avg:{linear.Sum(x => x) / (float)linear.Count}");
 
 
 
