@@ -78,11 +78,20 @@
                 return (root, depth);
             }
             else
-            foreach (var item in root.Childrens)
             {
-                DeepFind(item, value, depth + 1);
+                List<(Node, int)?> list = new ();
+                foreach (var item in root.Childrens)
+                {
+                        list.Add(DeepFind(item, value, depth + 1));
+                }
+                var compeleted = list.Where(x => x != null);
+                if (compeleted.Count() > 0)
+                {
+                    return compeleted.MinBy(x => x.Value.Item2);
+                }
+                else
+                    return null;
             }
-            return null;
         }
 
 
