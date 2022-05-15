@@ -5,7 +5,10 @@
 
 
 
-
+using System.Linq.Expressions;
+/// <summary>
+/// Выбрать метод и написать программу сортировки телефонного справочника по фамилиям в лексикографическом порядке.
+/// </summary>
 static class Program
 {
    
@@ -20,7 +23,7 @@ static class Program
         newList.Add(input.First());
         input.RemoveAt(0);
 
-
+        
         foreach (var item in input)
         {
             bool t = false;
@@ -50,10 +53,9 @@ static class Program
 
     static void Main(string[] args)
     {
-        var random = new Random();
         var list = File.ReadAllLines("TextFile1.txt").ToList();
 
-        list = list.OrderBy(x => random.Next()).ToList().GetRange(0, 5);
+        list = list.OrderBy(x => Random.Shared.Next()).ToList().GetRange(0, 5);
 
 
 

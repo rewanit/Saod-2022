@@ -30,6 +30,7 @@ namespace ImageCompressor.TestModules
              
                 
             };
+
             T loaded = Load(path);
             
             foreach (var item in DelegateList)
