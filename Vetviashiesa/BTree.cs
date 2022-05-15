@@ -73,6 +73,7 @@
 
         private (Node,int)? DeepFind(Node root, int? value,int depth=0)
         {
+            (int?, int?)? lol;
             if (root.Key<value)
             {
                 return (root, depth);
