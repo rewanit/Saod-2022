@@ -1,4 +1,6 @@
-﻿class Program
+﻿using System.Collections.Generic;
+
+class Program
 {
     static void Main(string[] args)
     {
@@ -59,6 +61,19 @@
     private static int Alg1(List<int> nums)
     {
         Console.WriteLine("Alg1");
+        //Dictionary<string,List<int>> dic = new ();
+        //foreach (var item in nums)
+        //{
+        //    if (dic.ContainsKey(item.ToString()[^2..^0]))
+        //    {
+        //        dic[item.ToString()[^2..^0]].Add(item);
+
+        //    }
+        //    else
+        //    {
+        //        dic.Add(item.ToString()[^2..^0], new() { item });
+        //    }
+        //}
         var groped = nums.GroupBy(x => x.ToString()[^2..^0]);
         foreach (var item in groped)
         {
