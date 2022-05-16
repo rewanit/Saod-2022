@@ -36,7 +36,7 @@ class Program
 
 
     }
-    //ВСЕГДА O(N^N-1)
+    //ВСЕГДА O(N^2)
     private static int Alg2(List<int> nums)
     {
         Console.WriteLine("Alg2");
